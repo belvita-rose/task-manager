@@ -2,9 +2,8 @@ const registerForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 const taskForm = document.getElementById('taskForm');
 const taskList = document.getElementById('taskList');
-let userId = null; // Variable pour stocker l'ID de l'utilisateur connecté
-
-// Fonction pour enregistrer un utilisateur
+let userId = null;
+//enregistrer d'utilisateur
 registerForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -25,7 +24,6 @@ registerForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Fonction pour connecter un utilisateur
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -42,13 +40,12 @@ loginForm.addEventListener('submit', async (e) => {
   if (response.ok) {
     userId = data.userId;
     alert('Connexion réussie');
-    loadTasks(); // Charger les tâches après la connexion
+    loadTasks();
   } else {
     alert('Erreur : ' + data.message);
   }
 });
 
-// Fonction pour ajouter une tâche
 taskForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -71,7 +68,7 @@ taskForm.addEventListener('submit', async (e) => {
   const data = await response.json();
   if (response.ok) {
     alert('Tâche ajoutée');
-    loadTasks(); // Recharger les tâches après l'ajout
+    loadTasks();
   } else {
     alert('Erreur : ' + data.message);
   }

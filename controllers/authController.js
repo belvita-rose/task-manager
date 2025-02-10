@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const usersFilePath = path.join(__dirname, '../data/users.json');
 
-// Inscription d'un utilisateur
+// Inscription utilisateur
 const register = (req, res) => {
   const { email, password } = req.body;
   if (!email || !password || password.length < 8) {
@@ -20,8 +20,7 @@ const register = (req, res) => {
   fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), 'utf8');
   res.status(201).json(newUser);
 };
-
-// Connexion de l'utilisateur
+//l'utilisateur connecté
 const login = (req, res) => {
   const { email, password } = req.body;
   const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf8'));
