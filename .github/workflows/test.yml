@@ -1,0 +1,37 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Installer Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      # Installer les dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # Exécuter les tests unitaires
+      - name: Run Jest tests
+        run: npm test
+
+      # Exécuter les tests BDD
+      - name: Run Cucumber tests
+        run: npm run test:bdd
+
+      # Exécuter les tests E2E
+      - name: Run Playwright tests
+        run: npm run test:e2e
