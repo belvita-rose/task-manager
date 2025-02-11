@@ -5,9 +5,9 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "dev": "nodemon server.js",
+    "dev": "server.js",
     "test:bdd": "cucumber-js",
-    "test:e2e": "playwright test"
+    "test:e2e": " npx playwright test"
   },
   "keywords": [],
   "author": "",
